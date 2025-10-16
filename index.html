@@ -40,7 +40,7 @@
             backdrop-filter: blur(10px);
             border-bottom: 1px solid rgba(44, 95, 141, 0.1);
             z-index: 1000;
-            padding: 15px 0;
+            padding: 25px 0;
             transition: all var(--transition-speed) ease;
         }
 
@@ -72,9 +72,9 @@
         }
 
         .nav-logo img {
-            height: 80px;
+            height: 200px;
             width: auto;
-            max-width: 280px;
+            max-width: none;
         }
 
         .nav-menu {
@@ -197,6 +197,7 @@
 
         section {
             padding: 80px 0;
+            scroll-margin-top: 100px;
         }
 
         /* ===========================
@@ -237,6 +238,14 @@
             background-color: #234a6b;
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(44, 95, 141, 0.4);
+        }
+
+        /* Button and link focus states */
+        .btn:focus-visible,
+        .nav-link:focus-visible,
+        .nav-toggle:focus-visible {
+            outline: 3px solid rgba(44, 95, 141, 0.45);
+            outline-offset: 2px;
         }
 
         /* ===========================
@@ -354,6 +363,7 @@
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
             margin-top: 40px;
+            align-items: stretch;
         }
 
         .focus-card {
@@ -364,6 +374,9 @@
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
             transition: all var(--transition-speed) ease;
             cursor: default;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
         }
 
         .focus-card:hover {
@@ -458,6 +471,87 @@
         }
 
         /* ===========================
+           CONTACT SECTION
+           =========================== */
+        .contact {
+            background-color: var(--light-gray);
+        }
+
+        .contact h2 {
+            text-align: center;
+            color: var(--primary-blue);
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-intro {
+            max-width: 800px;
+            margin: 0 auto 30px;
+            text-align: center;
+            color: var(--dark-gray);
+            font-size: 1.05rem;
+        }
+
+        .contact-card {
+            background-color: var(--white);
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
+            padding: 30px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .form-field {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-field label {
+            font-weight: 600;
+            color: var(--dark-gray);
+        }
+
+        .form-field input,
+        .form-field textarea {
+            padding: 14px 16px;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+            width: 100%;
+            resize: vertical;
+        }
+
+        .form-field input:focus,
+        .form-field textarea:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 4px rgba(44, 95, 141, 0.12);
+        }
+
+        .form-field textarea {
+            min-height: 140px;
+        }
+
+        .form-actions {
+            margin-top: 10px;
+            display: flex;
+            justify-content: flex-start;
+        }
+
+        .form-status {
+            margin-top: 15px;
+            font-size: 0.975rem;
+            color: #2e7d32;
+        }
+
+        /* ===========================
            FOOTER
            =========================== */
         footer {
@@ -500,7 +594,7 @@
             }
 
             .hero {
-                padding: 160px 0 60px;
+                padding: 200px 0 60px;
             }
 
             .hero h1 {
@@ -520,28 +614,30 @@
             .nav-logo {
                 height: 50px;
                 position: absolute;
-                left: 20px;
+                left: 50%;
+                transform: translateX(-50%);
             }
 
             .nav-logo img {
-                height: 65px;
-                max-width: 200px;
+                height: 160px;
+                max-width: none;
             }
 
             .nav-menu {
                 position: fixed;
-                top: 80px;
+                top: 0;
                 left: -100%;
                 width: 100%;
-                height: calc(100vh - 80px);
+                height: 100vh;
                 background-color: rgba(255, 255, 255, 0.98);
                 backdrop-filter: blur(10px);
                 flex-direction: column;
                 justify-content: flex-start;
                 align-items: center;
-                padding-top: 50px;
+                padding-top: 100px;
                 gap: 30px;
                 transition: left var(--transition-speed) ease;
+                z-index: 999;
             }
 
             .nav-menu.active {
@@ -571,6 +667,10 @@
             .cta-section {
                 padding: 40px 30px;
             }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         /* Mobile */
@@ -592,7 +692,7 @@
             }
 
             .hero {
-                padding: 140px 0 40px;
+                padding: 180px 0 40px;
             }
 
             .hero h1 {
@@ -606,12 +706,13 @@
 
             .nav-logo {
                 height: 45px;
-                left: 15px;
+                left: 50%;
+                transform: translateX(-50%);
             }
 
             .nav-logo img {
-                height: 55px;
-                max-width: 160px;
+                height: 140px;
+                max-width: none;
             }
 
             .btn {
@@ -666,12 +767,15 @@
                 <li class="nav-item">
                     <a href="#network" class="nav-link">Network</a>
                 </li>
+                <li class="nav-item">
+                    <a href="#contact" class="nav-link">Contact</a>
+                </li>
             </ul>
-            <div class="nav-toggle" id="nav-toggle">
+            <button class="nav-toggle" id="nav-toggle" aria-controls="nav-menu" aria-expanded="false" aria-label="Toggle navigation" type="button">
                 <span></span>
                 <span></span>
                 <span></span>
-            </div>
+            </button>
         </div>
     </nav>
 
@@ -687,7 +791,7 @@
                     creating impactful content that saves lives and transforms health outcomes.
                 </p>
                 <div class="hero-cta">
-                    <a href="#focus-areas" class="btn btn-primary">Explore Our Network</a>
+                    <a href="#contact" class="btn btn-primary">Explore Our Network</a>
                 </div>
             </div>
         </div>
@@ -870,7 +974,43 @@
                     Subscribe for updates on new content, expert interviews, and health insights 
                     delivered directly to your inbox.
                 </p>
-                <a href="#subscribe" class="btn btn-primary">Join Our Community</a>
+                <a href="#contact" class="btn btn-primary">Join Our Community</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===========================
+         CONTACT SECTION
+         =========================== -->
+    <section class="contact fade-in" id="contact">
+        <div class="container">
+            <h2>Contact Us</h2>
+            <p class="contact-intro">Have a question, partnership idea, or want to join the network? Send us a message and we’ll get back to you within 1–2 business days.</p>
+            <div class="contact-card">
+                <form id="contact-form" novalidate>
+                    <div class="form-grid">
+                        <div class="form-field">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" placeholder="Your full name" required>
+                        </div>
+                        <div class="form-field">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" placeholder="you@example.com" required>
+                        </div>
+                        <div class="form-field">
+                            <label for="phone">Phone <span style="font-weight:400;opacity:.7;">(optional)</span></label>
+                            <input type="tel" id="phone" name="phone" placeholder="(123) 456-7890">
+                        </div>
+                        <div class="form-field" style="grid-column: 1 / -1;">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" placeholder="How can we help?" required></textarea>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-secondary" id="contact-submit">Send Message</button>
+                    </div>
+                    <div class="form-status" id="form-status" role="status" aria-live="polite"></div>
+                </form>
             </div>
         </div>
     </section>
@@ -891,19 +1031,19 @@
         // Smooth scroll for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
+                const href = this.getAttribute('href');
+                // Ignore if it's just '#'
+                if (!href || href === '#') return;
+                const target = document.querySelector(href);
                 if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                    
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
                     // Close mobile menu if open
-                    const navMenu = document.getElementById('nav-menu');
-                    const navToggle = document.getElementById('nav-toggle');
-                    navMenu.classList.remove('active');
-                    navToggle.classList.remove('active');
+                    const navMenuEl = document.getElementById('nav-menu');
+                    const navToggleEl = document.getElementById('nav-toggle');
+                    navMenuEl.classList.remove('active');
+                    navToggleEl.classList.remove('active');
+                    navToggleEl.setAttribute('aria-expanded', 'false');
                 }
             });
         });
@@ -913,8 +1053,29 @@
         const navMenu = document.getElementById('nav-menu');
 
         navToggle.addEventListener('click', function() {
-            navMenu.classList.toggle('active');
+            const isOpen = navMenu.classList.toggle('active');
             navToggle.classList.toggle('active');
+            navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        });
+
+        // Close menu on outside click
+        document.addEventListener('click', (e) => {
+            const clickedInside = e.target.closest('#nav-menu') || e.target.closest('#nav-toggle');
+            if (!clickedInside && navMenu.classList.contains('active')) {
+                navMenu.classList.remove('active');
+                navToggle.classList.remove('active');
+                navToggle.setAttribute('aria-expanded', 'false');
+            }
+        });
+
+        // Close menu with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && navMenu.classList.contains('active')) {
+                navMenu.classList.remove('active');
+                navToggle.classList.remove('active');
+                navToggle.setAttribute('aria-expanded', 'false');
+                navToggle.focus();
+            }
         });
 
         // Navbar scroll effect
@@ -950,6 +1111,39 @@
         document.querySelectorAll('.focus-card').forEach((card, index) => {
             card.style.transitionDelay = `${index * 0.1}s`;
         });
+
+        // Contact form handling (client-side only)
+        const contactForm = document.getElementById('contact-form');
+        if (contactForm) {
+            const statusEl = document.getElementById('form-status');
+            contactForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const submitBtn = document.getElementById('contact-submit');
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Sending...';
+
+                // Simple validation
+                const formData = new FormData(contactForm);
+                const name = (formData.get('name') || '').toString().trim();
+                const email = (formData.get('email') || '').toString().trim();
+                const message = (formData.get('message') || '').toString().trim();
+                if (!name || !email || !message) {
+                    statusEl.style.color = '#c62828';
+                    statusEl.textContent = 'Please fill in Name, Email, and Message.';
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Send Message';
+                    return;
+                }
+
+                // Demo: simulate async success
+                await new Promise(r => setTimeout(r, 800));
+                statusEl.style.color = '#2e7d32';
+                statusEl.textContent = 'Thanks! Your message has been sent.';
+                contactForm.reset();
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Send Message';
+            });
+        }
     </script>
 
 </body>
