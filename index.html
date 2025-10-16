@@ -60,9 +60,11 @@
         }
 
         .nav-logo {
-            height: 50px;
+            height: 60px;
             width: auto;
             transition: transform var(--transition-speed) ease;
+            display: flex;
+            align-items: center;
         }
 
         .nav-logo:hover {
@@ -70,8 +72,9 @@
         }
 
         .nav-logo img {
-            height: 50px;
+            height: 60px;
             width: auto;
+            max-width: 200px;
         }
 
         .nav-menu {
@@ -509,6 +512,22 @@
             }
 
 
+            .nav-container {
+                justify-content: center;
+                position: relative;
+            }
+
+            .nav-logo {
+                height: 50px;
+                position: absolute;
+                left: 20px;
+            }
+
+            .nav-logo img {
+                height: 50px;
+                max-width: 150px;
+            }
+
             .nav-menu {
                 position: fixed;
                 top: 80px;
@@ -531,6 +550,8 @@
 
             .nav-toggle {
                 display: flex;
+                position: absolute;
+                right: 20px;
             }
 
             .focus-grid {
@@ -584,11 +605,13 @@
 
 
             .nav-logo {
-                height: 40px;
+                height: 45px;
+                left: 15px;
             }
 
             .nav-logo img {
-                height: 40px;
+                height: 45px;
+                max-width: 120px;
             }
 
             .btn {
@@ -628,7 +651,7 @@
     <nav class="navbar" id="navbar">
         <div class="nav-container">
             <a href="#hero" class="nav-logo">
-                <img src="HealthScope Network.png" alt="Health Scope Network Logo">
+                <img src="HSN_TBG.png" alt="Health Scope Network Logo">
             </a>
             <ul class="nav-menu" id="nav-menu">
                 <li class="nav-item">
