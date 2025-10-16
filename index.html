@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Scope Network - Empowering Communities Through Health Education</title>
+    <meta name="description" content="Join Health Scope Network as we bridge the gap between health information and communities through evidence-based content and authentic storytelling.">
+    
+    <style>
+        /* ===========================
+           RESET & BASE STYLES
+           =========================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+            line-height: 1.6;
+            color: #333333;
+            background-color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        /* ===========================
+           COLOR VARIABLES (Easy to update)
+           =========================== */
+        :root {
+            --primary-blue: #2C5F8D;
+            --secondary-green: #4CAF50;
+            --accent-orange: #FF6B6B;
+            --light-gray: #F5F5F5;
+            --dark-gray: #333333;
+            --white: #ffffff;
+            --transition-speed: 0.3s;
+        }
+
+        /* ===========================
+           TYPOGRAPHY
+           =========================== */
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            line-height: 1.2;
+            color: var(--dark-gray);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            font-size: 1.125rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        /* ===========================
+           CONTAINER & LAYOUT
+           =========================== */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        /* ===========================
+           BUTTONS
+           =========================== */
+        .btn {
+            display: inline-block;
+            padding: 16px 40px;
+            font-size: 1.125rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all var(--transition-speed) ease;
+            cursor: pointer;
+            border: none;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-orange);
+            color: var(--white);
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+        }
+
+        .btn-primary:hover {
+            background-color: #ff5252;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
+        }
+
+        .btn-secondary {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            box-shadow: 0 4px 15px rgba(44, 95, 141, 0.3);
+        }
+
+        .btn-secondary:hover {
+            background-color: #234a6b;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(44, 95, 141, 0.4);
+        }
+
+        /* ===========================
+           ANIMATIONS
+           =========================== */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ===========================
+           HERO SECTION
+           =========================== */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, #3a7bb5 100%);
+            color: var(--white);
+            padding: 120px 0 100px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            color: var(--white);
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .hero-subheadline {
+            font-size: 1.25rem;
+            line-height: 1.8;
+            margin-bottom: 2.5rem;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.95;
+            animation: fadeInUp 0.8s ease 0.2s backwards;
+        }
+
+        .hero-cta {
+            animation: fadeInUp 0.8s ease 0.4s backwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ===========================
+           MISSION SECTION
+           =========================== */
+        .mission {
+            background-color: var(--white);
+            text-align: center;
+        }
+
+        .mission h2 {
+            color: var(--primary-blue);
+            margin-bottom: 2rem;
+        }
+
+        .mission-content {
+            max-width: 900px;
+            margin: 0 auto;
+            font-size: 1.125rem;
+            line-height: 2;
+            color: var(--dark-gray);
+        }
+
+        /* ===========================
+           FOCUS AREAS SECTION
+           =========================== */
+        .focus-areas {
+            background-color: var(--light-gray);
+        }
+
+        .focus-areas h2 {
+            text-align: center;
+            color: var(--primary-blue);
+            margin-bottom: 3rem;
+        }
+
+        .focus-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .focus-card {
+            background-color: var(--white);
+            padding: 40px 30px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
+            transition: all var(--transition-speed) ease;
+            cursor: default;
+        }
+
+        .focus-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+        }
+
+        .focus-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            transition: transform var(--transition-speed) ease;
+        }
+
+        .focus-card:hover .focus-icon {
+            transform: scale(1.1);
+        }
+
+        .focus-card h3 {
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+            font-size: 1.35rem;
+        }
+
+        .focus-card p {
+            color: #666;
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 0;
+        }
+
+        /* ===========================
+           AFFILIATIONS SECTION
+           =========================== */
+        .affiliations {
+            background-color: var(--white);
+            text-align: center;
+        }
+
+        .affiliations h2 {
+            color: var(--primary-blue);
+            margin-bottom: 2rem;
+        }
+
+        .affiliations-intro {
+            max-width: 800px;
+            margin: 0 auto 50px;
+            font-size: 1.125rem;
+            line-height: 1.8;
+            color: var(--dark-gray);
+        }
+
+        .partner-logos {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin: 50px 0;
+        }
+
+        .partner-logo {
+            width: 140px;
+            height: 140px;
+            transition: transform var(--transition-speed) ease;
+            opacity: 0.7;
+        }
+
+        .partner-logo:hover {
+            transform: scale(1.05);
+            opacity: 1;
+        }
+
+        .cta-section {
+            margin-top: 60px;
+            padding: 60px 40px;
+            background: linear-gradient(135deg, var(--secondary-green) 0%, #45a049 100%);
+            border-radius: 16px;
+            color: var(--white);
+        }
+
+        .cta-section h3 {
+            color: var(--white);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            margin-bottom: 2rem;
+            font-size: 1.125rem;
+            opacity: 0.95;
+        }
+
+        /* ===========================
+           FOOTER
+           =========================== */
+        footer {
+            background-color: var(--dark-gray);
+            color: var(--white);
+            text-align: center;
+            padding: 40px 0;
+        }
+
+        footer p {
+            margin: 0;
+            opacity: 0.8;
+            font-size: 0.95rem;
+        }
+
+        /* ===========================
+           RESPONSIVE DESIGN
+           =========================== */
+        
+        /* Tablet */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.75rem;
+            }
+
+            h3 {
+                font-size: 1.25rem;
+            }
+
+            p {
+                font-size: 1rem;
+            }
+
+            section {
+                padding: 60px 0;
+            }
+
+            .hero {
+                padding: 80px 0 60px;
+            }
+
+            .hero h1 {
+                font-size: 2.25rem;
+            }
+
+            .hero-subheadline {
+                font-size: 1.125rem;
+            }
+
+            .focus-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .partner-logos {
+                gap: 30px;
+            }
+
+            .partner-logo {
+                width: 100px;
+                height: 100px;
+            }
+
+            .cta-section {
+                padding: 40px 30px;
+            }
+        }
+
+        /* Mobile */
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 15px;
+            }
+
+            h1 {
+                font-size: 1.75rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            section {
+                padding: 40px 0;
+            }
+
+            .hero {
+                padding: 60px 0 40px;
+            }
+
+            .hero h1 {
+                font-size: 1.85rem;
+            }
+
+            .hero-subheadline {
+                font-size: 1rem;
+            }
+
+            .btn {
+                padding: 14px 32px;
+                font-size: 1rem;
+            }
+
+            .focus-card {
+                padding: 30px 20px;
+            }
+
+            .focus-icon {
+                width: 60px;
+                height: 60px;
+            }
+
+            .partner-logo {
+                width: 80px;
+                height: 80px;
+            }
+
+            .cta-section {
+                padding: 30px 20px;
+            }
+
+            .cta-section h3 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===========================
+         HERO SECTION
+         =========================== -->
+    <section class="hero" id="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Empowering Communities Through Health Education</h1>
+                <p class="hero-subheadline">
+                    Join us as we bridge the gap between health information and the communities that need it most, 
+                    creating impactful content that saves lives and transforms health outcomes.
+                </p>
+                <div class="hero-cta">
+                    <a href="#focus-areas" class="btn btn-primary">Explore Our Network</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===========================
+         MISSION SECTION
+         =========================== -->
+    <section class="mission fade-in" id="mission">
+        <div class="container">
+            <h2>Our Mission</h2>
+            <div class="mission-content">
+                <p>
+                    We are dedicated to creating authentic, accessible health content that resonates with diverse audiences. 
+                    Through our network of specialized health podcasts and digital platforms, we provide evidence-based information, 
+                    real patient stories, and expert insights on critical health topics. Our mission is to empower individuals 
+                    with the knowledge and resources needed to make informed health decisions and advocate for their wellbeing.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===========================
+         FOCUS AREAS SECTION
+         =========================== -->
+    <section class="focus-areas fade-in" id="focus-areas">
+        <div class="container">
+            <h2>What We Cover</h2>
+            <div class="focus-grid">
+                
+                <!-- Card 1: Chronic Disease Management -->
+                <div class="focus-card fade-in">
+                    <div class="focus-icon">
+                        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="50" cy="50" r="45" fill="#E8F4F8" stroke="#2C5F8D" stroke-width="2"/>
+                            <path d="M50 25 L50 75 M25 50 L75 50" stroke="#2C5F8D" stroke-width="3" stroke-linecap="round"/>
+                            <circle cx="50" cy="50" r="8" fill="#4CAF50"/>
+                            <path d="M35 35 Q40 30 45 35" stroke="#FF6B6B" stroke-width="2" fill="none"/>
+                            <path d="M55 65 Q60 70 65 65" stroke="#FF6B6B" stroke-width="2" fill="none"/>
+                        </svg>
+                    </div>
+                    <h3>Chronic Disease Management</h3>
+                    <p>Expert guidance on living well with diabetes, heart disease, and other long-term conditions.</p>
+                </div>
+
+                <!-- Card 2: Mental Health & Wellness -->
+                <div class="focus-card fade-in">
+                    <div class="focus-icon">
+                        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="50" cy="50" r="45" fill="#F0F8F0" stroke="#4CAF50" stroke-width="2"/>
+                            <path d="M50 30 C55 30 60 35 60 42 C60 50 50 55 50 60 M50 70 L50 72" stroke="#4CAF50" stroke-width="3" stroke-linecap="round"/>
+                            <path d="M50 30 C45 30 40 35 40 42 C40 50 50 55 50 60" stroke="#4CAF50" stroke-width="3" stroke-linecap="round"/>
+                            <circle cx="35" cy="35" r="3" fill="#2C5F8D"/>
+                            <circle cx="65" cy="35" r="3" fill="#2C5F8D"/>
+                        </svg>
+                    </div>
+                    <h3>Mental Health & Wellness</h3>
+                    <p>Compassionate conversations about anxiety, depression, stress management, and emotional wellbeing.</p>
+                </div>
+
+                <!-- Card 3: Preventive Care -->
+                <div class="focus-card fade-in">
+                    <div class="focus-icon">
+                        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="50" cy="50" r="45" fill="#FFF5F5" stroke="#FF6B6B" stroke-width="2"/>
+                            <path d="M30 50 L45 65 L70 35" stroke="#FF6B6B" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                            <circle cx="50" cy="50" r="30" stroke="#4CAF50" stroke-width="2" fill="none" stroke-dasharray="5,5"/>
+                        </svg>
+                    </div>
+                    <h3>Preventive Care</h3>
+                    <p>Proactive strategies for screenings, vaccinations, and lifestyle choices that prevent illness.</p>
+                </div>
+
+                <!-- Card 4: Health Equity & Access -->
+                <div class="focus-card fade-in">
+                    <div class="focus-icon">
+                        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="10" y="10" width="80" height="80" rx="8" fill="#FFF8E8" stroke="#FF6B6B" stroke-width="2"/>
+                            <circle cx="35" cy="35" r="8" fill="#2C5F8D"/>
+                            <circle cx="65" cy="35" r="8" fill="#4CAF50"/>
+                            <circle cx="35" cy="65" r="8" fill="#FF6B6B"/>
+                            <circle cx="65" cy="65" r="8" fill="#2C5F8D"/>
+                            <line x1="35" y1="35" x2="65" y2="35" stroke="#4CAF50" stroke-width="2"/>
+                            <line x1="65" y1="35" x2="65" y2="65" stroke="#4CAF50" stroke-width="2"/>
+                            <line x1="65" y1="65" x2="35" y2="65" stroke="#4CAF50" stroke-width="2"/>
+                            <line x1="35" y1="65" x2="35" y2="35" stroke="#4CAF50" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h3>Health Equity & Access</h3>
+                    <p>Addressing disparities and ensuring all communities have access to quality healthcare information.</p>
+                </div>
+
+                <!-- Card 5: Emerging Treatments -->
+                <div class="focus-card fade-in">
+                    <div class="focus-icon">
+                        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="50" cy="50" r="45" fill="#F5F0FF" stroke="#2C5F8D" stroke-width="2"/>
+                            <path d="M50 20 L55 40 L75 45 L60 60 L65 80 L50 70 L35 80 L40 60 L25 45 L45 40 Z" fill="#4CAF50" opacity="0.3"/>
+                            <circle cx="50" cy="50" r="15" fill="#2C5F8D"/>
+                            <circle cx="50" cy="50" r="8" fill="#FF6B6B"/>
+                        </svg>
+                    </div>
+                    <h3>Emerging Treatments</h3>
+                    <p>Insights into breakthrough therapies, clinical trials, and innovative medical advances.</p>
+                </div>
+
+                <!-- Card 6: Community Health -->
+                <div class="focus-card fade-in">
+                    <div class="focus-icon">
+                        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="50" cy="50" r="45" fill="#E8F8F0" stroke="#4CAF50" stroke-width="2"/>
+                            <circle cx="35" cy="40" r="10" fill="#2C5F8D"/>
+                            <circle cx="65" cy="40" r="10" fill="#2C5F8D"/>
+                            <circle cx="50" cy="65" r="10" fill="#FF6B6B"/>
+                            <path d="M35 40 L50 65 M65 40 L50 65" stroke="#4CAF50" stroke-width="2"/>
+                            <circle cx="35" cy="40" r="5" fill="#fff"/>
+                            <circle cx="65" cy="40" r="5" fill="#fff"/>
+                            <circle cx="50" cy="65" r="5" fill="#fff"/>
+                        </svg>
+                    </div>
+                    <h3>Community Health</h3>
+                    <p>Supporting public health initiatives and fostering healthier, more connected communities.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ===========================
+         AFFILIATIONS & CTA SECTION
+         =========================== -->
+    <section class="affiliations fade-in" id="network">
+        <div class="container">
+            <h2>Our Network</h2>
+            <p class="affiliations-intro">
+                Building partnerships with leading healthcare organizations, pharmaceutical innovators, 
+                and community advocates to amplify our impact.
+            </p>
+            
+            <div class="partner-logos">
+                <!-- Partner Logo 1 -->
+                <svg class="partner-logo" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="10" y="10" width="100" height="100" rx="15" fill="#2C5F8D" opacity="0.1"/>
+                    <path d="M60 35 L60 85 M35 60 L85 60" stroke="#2C5F8D" stroke-width="4" stroke-linecap="round"/>
+                    <circle cx="60" cy="60" r="25" stroke="#2C5F8D" stroke-width="3" fill="none"/>
+                </svg>
+
+                <!-- Partner Logo 2 -->
+                <svg class="partner-logo" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="60" cy="60" r="50" fill="#4CAF50" opacity="0.1"/>
+                    <path d="M60 30 C40 30 30 45 30 60 C30 75 40 90 60 90 C80 90 90 75 90 60 C90 45 80 30 60 30 Z" fill="none" stroke="#4CAF50" stroke-width="3"/>
+                    <circle cx="60" cy="60" r="15" fill="#4CAF50"/>
+                </svg>
+
+                <!-- Partner Logo 3 -->
+                <svg class="partner-logo" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="15" y="15" width="90" height="90" rx="20" fill="#FF6B6B" opacity="0.1"/>
+                    <path d="M40 60 L55 75 L80 45" stroke="#FF6B6B" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                </svg>
+
+                <!-- Partner Logo 4 -->
+                <svg class="partner-logo" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+                    <polygon points="60,20 90,50 75,90 45,90 30,50" fill="#2C5F8D" opacity="0.1"/>
+                    <polygon points="60,30 80,55 70,85 50,85 40,55" fill="none" stroke="#2C5F8D" stroke-width="3"/>
+                    <circle cx="60" cy="60" r="10" fill="#2C5F8D"/>
+                </svg>
+
+                <!-- Partner Logo 5 -->
+                <svg class="partner-logo" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="20" y="20" width="80" height="80" rx="10" fill="#4CAF50" opacity="0.1"/>
+                    <rect x="30" y="30" width="60" height="60" rx="8" fill="none" stroke="#4CAF50" stroke-width="3"/>
+                    <rect x="45" y="45" width="30" height="30" rx="5" fill="#4CAF50"/>
+                </svg>
+            </div>
+
+            <!-- Final CTA -->
+            <div class="cta-section fade-in">
+                <h3>Join Our Community</h3>
+                <p>
+                    Subscribe for updates on new content, expert interviews, and health insights 
+                    delivered directly to your inbox.
+                </p>
+                <a href="#subscribe" class="btn btn-primary">Join Our Community</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===========================
+         FOOTER
+         =========================== -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Health Scope Network. Empowering communities through evidence-based health education.</p>
+        </div>
+    </footer>
+
+    <!-- ===========================
+         JAVASCRIPT
+         =========================== -->
+    <script>
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all elements with fade-in class
+        document.querySelectorAll('.fade-in').forEach(element => {
+            observer.observe(element);
+        });
+
+        // Add staggered animation delay to focus cards
+        document.querySelectorAll('.focus-card').forEach((card, index) => {
+            card.style.transitionDelay = `${index * 0.1}s`;
+        });
+    </script>
+
+</body>
+</html>
+
