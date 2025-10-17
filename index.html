@@ -623,6 +623,13 @@
                 max-width: none;
             }
 
+            /* Preserve centering when tapping (mobile hover) */
+            .nav-logo:hover,
+            .nav-logo:active,
+            .nav-logo:focus {
+                transform: translateX(-50%) scale(1.05);
+            }
+
             .nav-menu {
                 position: fixed;
                 top: 0;
@@ -713,6 +720,13 @@
             .nav-logo img {
                 height: 140px;
                 max-width: none;
+            }
+
+            /* Preserve centering when tapping (mobile hover) */
+            .nav-logo:hover,
+            .nav-logo:active,
+            .nav-logo:focus {
+                transform: translateX(-50%) scale(1.05);
             }
 
             .btn {
