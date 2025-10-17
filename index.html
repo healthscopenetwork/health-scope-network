@@ -471,6 +471,149 @@
         }
 
         /* ===========================
+           FEATURED STORIES
+           =========================== */
+        .stories {
+            background-color: var(--white);
+        }
+
+        .stories h2 {
+            text-align: center;
+            color: var(--primary-blue);
+            margin-bottom: 1.5rem;
+        }
+
+        .stories-intro {
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto 30px;
+            color: var(--dark-gray);
+        }
+
+        .stories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
+            margin-top: 20px;
+        }
+
+        .story-card {
+            background: linear-gradient(180deg, rgba(44,95,141,0.06) 0%, rgba(44,95,141,0.03) 100%);
+            border: 1px solid rgba(44, 95, 141, 0.08);
+            border-radius: 12px;
+            padding: 28px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.06);
+            transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+        }
+
+        .story-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.12);
+        }
+
+        .story-quote {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: var(--dark-gray);
+        }
+
+        .story-quote::before,
+        .story-quote::after {
+            content: '“';
+            color: rgba(44,95,141,0.5);
+            font-weight: 700;
+            margin-right: 6px;
+        }
+
+        .story-quote::after {
+            content: '”';
+            margin-left: 6px;
+            margin-right: 0;
+        }
+
+        .story-link {
+            display: inline-block;
+            margin-top: 14px;
+            color: var(--primary-blue);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .story-link:hover {
+            text-decoration: underline;
+        }
+
+        /* ===========================
+           OUR REACH
+           =========================== */
+        .reach {
+            position: relative;
+            background-color: var(--light-gray);
+            overflow: hidden;
+        }
+
+        .reach::before {
+            /* Decorative subtle US map silhouette */
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" opacity="0.07"><path fill="%232C5F8D" d="M61 332l38-10 20 22 43-8 26 25 45 1 15-16 40 6 33-25 39 10 52-7 26 19 51-9 32 12 48-6 21 19 40-9 30-27 46-5 32-31 62-2 18-23 48 5 32-19 28 10 18-18 28 8 7 29-24 33-21 33-41 18-44 1-32 18-41 3-28 16-53 5-31 14-60 2-32 10-48-3-38 12-44-9-34 9-40-7-36 11-44-8-44 12-54-14-41 5-33-18-35 2-24-19 9-33z"/></svg>') center/cover no-repeat;
+        }
+
+        .reach h2 {
+            text-align: center;
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .reach p.reach-text {
+            position: relative;
+            z-index: 1;
+            max-width: 950px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .reach strong {
+            font-weight: 800;
+        }
+
+        /* ===========================
+           WHY PEOPLE JOIN
+           =========================== */
+        .why-join {
+            background-color: var(--white);
+        }
+
+        .why-join h2 {
+            text-align: center;
+            color: var(--primary-blue);
+            margin-bottom: 1.5rem;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
+            margin-top: 20px;
+        }
+
+        .testimonial-card {
+            background: #ffffff;
+            border: 1px solid rgba(44, 95, 141, 0.1);
+            border-radius: 12px;
+            padding: 24px 26px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.06);
+        }
+
+        .testimonial-card p {
+            margin: 0;
+            font-size: 1.05rem;
+        }
+
+        /* ===========================
            CONTACT SECTION
            =========================== */
         .contact {
@@ -678,6 +821,8 @@
             .form-grid {
                 grid-template-columns: 1fr;
             }
+            .story-quote { font-size: 1.05rem; }
+            .stories-grid, .testimonial-grid { gap: 16px; }
         }
 
         /* Mobile */
@@ -755,6 +900,7 @@
             .cta-section h3 {
                 font-size: 1.5rem;
             }
+            .story-quote { font-size: 1rem; }
         }
     </style>
 </head>
@@ -799,13 +945,65 @@
     <section class="hero" id="hero">
         <div class="container">
             <div class="hero-content">
-                <h1>Empowering Communities Through Health Education</h1>
+                <h1>You're not just a patient. You're a person with a story.</h1>
                 <p class="hero-subheadline">
-                    Join us as we bridge the gap between health information and the communities that need it most, 
-                    creating impactful content that saves lives and transforms health outcomes.
+                    HealthScope Network is a place to share those stories and connect with others who understand. Real people. Real conversations. Real community.
                 </p>
                 <div class="hero-cta">
-                    <a href="#contact" class="btn btn-primary">Explore Our Network</a>
+                    <a href="#contact" class="btn btn-primary">Join the conversation</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===========================
+         FEATURED STORIES
+         =========================== -->
+    <section class="stories fade-in" id="featured-stories">
+        <div class="container">
+            <h2>Real People. Real Stories. Real Strength.</h2>
+            <div class="stories-grid">
+                <article class="story-card">
+                    <p class="story-quote">How I learned to live again after prostate cancer.</p>
+                    <a href="#" class="story-link">Read More</a>
+                </article>
+                <article class="story-card">
+                    <p class="story-quote">The day I stopped being afraid to ask for help.</p>
+                    <a href="#" class="story-link">Read More</a>
+                </article>
+                <article class="story-card">
+                    <p class="story-quote">What surviving a heart attack taught me about life.</p>
+                    <a href="#" class="story-link">Read More</a>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===========================
+         OUR REACH
+         =========================== -->
+    <section class="reach fade-in" id="our-reach">
+        <div class="container">
+            <h2>A Growing Community Across the Nation</h2>
+            <p class="reach-text">HealthScope Network reaches people in all 50 states — from major cities to small towns — with over <strong>250,000</strong> active subscribers and more than <strong>10 million</strong> monthly impressions across platforms.</p>
+        </div>
+    </section>
+
+    <!-- ===========================
+         WHY PEOPLE JOIN
+         =========================== -->
+    <section class="why-join fade-in" id="why-join">
+        <div class="container">
+            <h2>Why People Come to HealthScope</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <p>“I finally found stories that sound like mine.”</p>
+                </div>
+                <div class="testimonial-card">
+                    <p>“It's the only health content I actually understand.”</p>
+                </div>
+                <div class="testimonial-card">
+                    <p>“Listening here made me feel like part of something again.”</p>
                 </div>
             </div>
         </div>
@@ -816,13 +1014,10 @@
          =========================== -->
     <section class="mission fade-in" id="mission">
         <div class="container">
-            <h2>Our Mission</h2>
+            <h2>Health is about people first.</h2>
             <div class="mission-content">
                 <p>
-                    We are dedicated to creating authentic, accessible health content that resonates with diverse audiences. 
-                    Through our network of specialized health podcasts and digital platforms, we provide evidence-based information, 
-                    real patient stories, and expert insights on critical health topics. Our mission is to empower individuals 
-                    with the knowledge and resources needed to make informed health decisions and advocate for their wellbeing.
+                    Our mission is to make information simple, clear, and human. We share real stories, honest conversations, and insights that cut through the noise. HealthScope Network is here to support you, to guide you, and to make sure no one faces their health journey alone.
                 </p>
             </div>
         </div>
@@ -848,7 +1043,7 @@
                         </svg>
                     </div>
                     <h3>Chronic Disease Management</h3>
-                    <p>Expert guidance on living well with diabetes, heart disease, and other long-term conditions.</p>
+                    <p>We talk about what it means to live with conditions like diabetes or heart disease. The daily challenges, the small victories, and the real ways people keep moving forward.</p>
                 </div>
 
                 <!-- Card 2: Mental Health & Wellness -->
@@ -862,8 +1057,8 @@
                             <circle cx="65" cy="35" r="3" fill="#2C5F8D"/>
                         </svg>
                     </div>
-                    <h3>Mental Health & Wellness</h3>
-                    <p>Compassionate conversations about anxiety, depression, stress management, and emotional wellbeing.</p>
+                    <h3>Mental Health and Wellness</h3>
+                    <p>Real conversations about anxiety, depression, and stress. We focus on understanding, support, and what it takes to feel whole again.</p>
                 </div>
 
                 <!-- Card 3: Preventive Care -->
@@ -876,7 +1071,7 @@
                         </svg>
                     </div>
                     <h3>Preventive Care</h3>
-                    <p>Proactive strategies for screenings, vaccinations, and lifestyle choices that prevent illness.</p>
+                    <p>Simple, clear steps to stay ahead of illness. From checkups to healthy habits, prevention starts with everyday choices.</p>
                 </div>
 
                 <!-- Card 4: Health Equity & Access -->
@@ -894,8 +1089,8 @@
                             <line x1="35" y1="65" x2="35" y2="35" stroke="#4CAF50" stroke-width="2"/>
                         </svg>
                     </div>
-                    <h3>Health Equity & Access</h3>
-                    <p>Addressing disparities and ensuring all communities have access to quality healthcare information.</p>
+                    <h3>Health Equity and Access</h3>
+                    <p>Everyone deserves care and information they can trust. We shine a light on the barriers that keep people from getting help and share ways to close those gaps.</p>
                 </div>
 
                 <!-- Card 5: Emerging Treatments -->
@@ -909,7 +1104,7 @@
                         </svg>
                     </div>
                     <h3>Emerging Treatments</h3>
-                    <p>Insights into breakthrough therapies, clinical trials, and innovative medical advances.</p>
+                    <p>Breaking down new therapies and medical advances in plain language so you know what is happening and how it can help you or someone you love.</p>
                 </div>
 
                 <!-- Card 6: Community Health -->
@@ -927,7 +1122,7 @@
                         </svg>
                     </div>
                     <h3>Community Health</h3>
-                    <p>Supporting public health initiatives and fostering healthier, more connected communities.</p>
+                    <p>Health grows stronger when people come together. We highlight local efforts, shared stories, and ways to build healthier, more connected communities.</p>
                 </div>
 
             </div>
@@ -941,8 +1136,11 @@
         <div class="container">
             <h2>Our Network</h2>
             <p class="affiliations-intro">
-                Building partnerships with leading healthcare organizations, pharmaceutical innovators, 
-                and community advocates to amplify our impact.
+                HealthScope Network connects people across the country through honest stories and shared experiences. We've grown into a national community reaching millions of listeners, readers, and viewers every month — all united by a simple goal: to make health feel human again.
+
+                Today, our reach spans all 50 states, with a growing audience of over 250,000 active subscribers and more than 10 million monthly impressions across podcasts, video, and digital platforms.
+
+                Our network brings together patients, caregivers, advocates, and healthcare voices who believe that information only matters when it connects to real life. We collaborate with trusted health organizations, research groups, and community advocates to share accurate, accessible, and human-centered stories that make a difference.
             </p>
             
             <div class="partner-logos">
@@ -985,8 +1183,7 @@
             <div class="cta-section fade-in">
                 <h3>Join Our Community</h3>
                 <p>
-                    Subscribe for updates on new content, expert interviews, and health insights 
-                    delivered directly to your inbox.
+                    Be part of a growing movement that puts people first. Subscribe for updates on new stories, expert interviews, and insights that bring clarity, hope, and connection to health.
                 </p>
                 <a href="#contact" class="btn btn-primary">Join Our Community</a>
             </div>
@@ -999,7 +1196,7 @@
     <section class="contact fade-in" id="contact">
         <div class="container">
             <h2>Contact Us</h2>
-            <p class="contact-intro">Have a question, partnership idea, or want to join the network? Send us a message and we’ll get back to you within 1–2 business days.</p>
+            <p class="contact-intro">Have a question, partnership idea, or want to join the network? Send us a message and we'll get back to you within 1-2 business days.</p>
             <div class="contact-card">
                 <form id="contact-form" novalidate>
                     <div class="form-grid">
@@ -1035,6 +1232,7 @@
     <footer>
         <div class="container">
             <p>&copy; 2025 Health Scope Network. Empowering communities through evidence-based health education.</p>
+            <p>Because behind every diagnosis, there's a person with a story.</p>
         </div>
     </footer>
 
