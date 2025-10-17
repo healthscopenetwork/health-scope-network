@@ -197,7 +197,7 @@
 
         section {
             padding: 80px 0;
-            scroll-margin-top: 100px;
+            scroll-margin-top: 80px;
         }
 
         /* ===========================
@@ -639,7 +639,7 @@
             border-radius: 12px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
             padding: 30px;
-            max-width: 900px;
+            max-width: 600px;
             margin: 0 auto;
         }
 
@@ -671,6 +671,11 @@
             resize: vertical;
         }
 
+        .form-field input::placeholder,
+        .form-field textarea::placeholder {
+            color: #9e9e9e;
+        }
+
         .form-field input:focus,
         .form-field textarea:focus {
             outline: none;
@@ -692,6 +697,10 @@
             margin-top: 15px;
             font-size: 0.975rem;
             color: #2e7d32;
+        }
+
+        .required {
+            color: var(--accent-orange);
         }
 
         /* ===========================
@@ -965,15 +974,12 @@
             <div class="stories-grid">
                 <article class="story-card">
                     <p class="story-quote">How I learned to live again after prostate cancer.</p>
-                    <a href="#" class="story-link">Read More</a>
                 </article>
                 <article class="story-card">
                     <p class="story-quote">The day I stopped being afraid to ask for help.</p>
-                    <a href="#" class="story-link">Read More</a>
                 </article>
                 <article class="story-card">
                     <p class="story-quote">What surviving a heart attack taught me about life.</p>
-                    <a href="#" class="story-link">Read More</a>
                 </article>
             </div>
         </div>
@@ -1143,41 +1149,7 @@
                 Our network brings together patients, caregivers, advocates, and healthcare voices who believe that information only matters when it connects to real life. We collaborate with trusted health organizations, research groups, and community advocates to share accurate, accessible, and human-centered stories that make a difference.
             </p>
             
-            <div class="partner-logos">
-                <!-- Partner Logo 1 -->
-                <svg class="partner-logo" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
-                    <rect x="10" y="10" width="100" height="100" rx="15" fill="#2C5F8D" opacity="0.1"/>
-                    <path d="M60 35 L60 85 M35 60 L85 60" stroke="#2C5F8D" stroke-width="4" stroke-linecap="round"/>
-                    <circle cx="60" cy="60" r="25" stroke="#2C5F8D" stroke-width="3" fill="none"/>
-                </svg>
-
-                <!-- Partner Logo 2 -->
-                <svg class="partner-logo" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="60" cy="60" r="50" fill="#4CAF50" opacity="0.1"/>
-                    <path d="M60 30 C40 30 30 45 30 60 C30 75 40 90 60 90 C80 90 90 75 90 60 C90 45 80 30 60 30 Z" fill="none" stroke="#4CAF50" stroke-width="3"/>
-                    <circle cx="60" cy="60" r="15" fill="#4CAF50"/>
-                </svg>
-
-                <!-- Partner Logo 3 -->
-                <svg class="partner-logo" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
-                    <rect x="15" y="15" width="90" height="90" rx="20" fill="#FF6B6B" opacity="0.1"/>
-                    <path d="M40 60 L55 75 L80 45" stroke="#FF6B6B" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-                </svg>
-
-                <!-- Partner Logo 4 -->
-                <svg class="partner-logo" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
-                    <polygon points="60,20 90,50 75,90 45,90 30,50" fill="#2C5F8D" opacity="0.1"/>
-                    <polygon points="60,30 80,55 70,85 50,85 40,55" fill="none" stroke="#2C5F8D" stroke-width="3"/>
-                    <circle cx="60" cy="60" r="10" fill="#2C5F8D"/>
-                </svg>
-
-                <!-- Partner Logo 5 -->
-                <svg class="partner-logo" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
-                    <rect x="20" y="20" width="80" height="80" rx="10" fill="#4CAF50" opacity="0.1"/>
-                    <rect x="30" y="30" width="60" height="60" rx="8" fill="none" stroke="#4CAF50" stroke-width="3"/>
-                    <rect x="45" y="45" width="30" height="30" rx="5" fill="#4CAF50"/>
-                </svg>
-            </div>
+            
 
             <!-- Final CTA -->
             <div class="cta-section fade-in">
@@ -1201,11 +1173,11 @@
                 <form id="contact-form" novalidate>
                     <div class="form-grid">
                         <div class="form-field">
-                            <label for="name">Name</label>
+                            <label for="name">Name <span class="required" aria-hidden="true">*</span></label>
                             <input type="text" id="name" name="name" placeholder="Your full name" required>
                         </div>
                         <div class="form-field">
-                            <label for="email">Email</label>
+                            <label for="email">Email <span class="required" aria-hidden="true">*</span></label>
                             <input type="email" id="email" name="email" placeholder="you@example.com" required>
                         </div>
                         <div class="form-field">
@@ -1213,7 +1185,7 @@
                             <input type="tel" id="phone" name="phone" placeholder="(123) 456-7890">
                         </div>
                         <div class="form-field" style="grid-column: 1 / -1;">
-                            <label for="message">Message</label>
+                            <label for="message">Message <span class="required" aria-hidden="true">*</span></label>
                             <textarea id="message" name="message" placeholder="How can we help?" required></textarea>
                         </div>
                     </div>
