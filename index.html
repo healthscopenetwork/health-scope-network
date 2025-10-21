@@ -509,14 +509,55 @@
             background: linear-gradient(180deg, rgba(44,95,141,0.06) 0%, rgba(44,95,141,0.03) 100%);
             border: 1px solid rgba(44, 95, 141, 0.08);
             border-radius: 12px;
-            padding: 28px;
+            padding: 0;
             box-shadow: 0 4px 6px rgba(0,0,0,0.06);
             transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+            overflow: hidden;
         }
 
         .story-card:hover {
             transform: translateY(-6px);
             box-shadow: 0 12px 24px rgba(0,0,0,0.12);
+        }
+
+        .story-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 12px 12px 0 0;
+            display: block;
+            filter: grayscale(20%);
+            transition: filter 0.3s ease;
+        }
+
+        .story-card:hover img {
+            filter: grayscale(0%);
+        }
+
+        .story-content {
+            padding: 28px;
+        }
+
+        .story-name {
+            font-size: 16px;
+            font-weight: 600;
+            color: #1F6FB2;
+            margin: 15px 0 10px 0;
+            text-align: center;
+            line-height: 1.4;
+        }
+
+        /* Override prior quote styles for new visual hierarchy */
+        .story-quote {
+            font-size: 15px;
+            font-style: italic;
+            color: #555;
+            line-height: 1.6;
+            text-align: center;
+        }
+        .story-quote::before,
+        .story-quote::after {
+            content: none;
         }
 
         .story-quote {
@@ -1060,13 +1101,25 @@
             <h2>Real People. Real Stories. Real Strength.</h2>
             <div class="stories-grid">
                 <article class="story-card">
-                    <p class="story-quote">How I learned to live again after prostate cancer.</p>
+                    <img src="images/James.png" alt="James R., prostate cancer survivor and advocate">
+                    <div class="story-content">
+                        <h3 class="story-name">James R., 58 — Survivor and Advocate</h3>
+                        <p class="story-quote">How I learned to live again after prostate cancer.</p>
+                    </div>
                 </article>
                 <article class="story-card">
-                    <p class="story-quote">The day I stopped being afraid to ask for help.</p>
+                    <img src="images/Monica.png" alt="Monica P., caregiver and mother">
+                    <div class="story-content">
+                        <h3 class="story-name">Monica P., 42 — Caregiver and Mother</h3>
+                        <p class="story-quote">The day I stopped being afraid to ask for help.</p>
+                    </div>
                 </article>
                 <article class="story-card">
-                    <p class="story-quote">What surviving a heart attack taught me about life.</p>
+                    <img src="images/Daniel.png" alt="Daniel S., heart attack survivor and volunteer mentor">
+                    <div class="story-content">
+                        <h3 class="story-name">Daniel S., 63 — Patient and Volunteer Mentor</h3>
+                        <p class="story-quote">What surviving a heart attack taught me about life.</p>
+                    </div>
                 </article>
             </div>
         </div>
