@@ -273,13 +273,17 @@
            HERO SECTION
            =========================== */
         .hero {
-            background: linear-gradient(135deg, var(--primary-blue) 0%, #3a7bb5 100%);
+            background: linear-gradient(135deg, #2C5F8D 0%, #1F6FB2 50%, #3A7CA5 100%);
+            background-size: 200% 200%;
+            animation: gradientShift 15s ease infinite;
             color: var(--white);
             padding: 180px 0 100px;
             text-align: center;
             position: relative;
             overflow: hidden;
             margin-top: 0;
+            will-change: background-position;
+            z-index: 0;
         }
 
 
@@ -290,13 +294,54 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
-            opacity: 0.3;
+            /* Subtle medical icons pattern */
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120"><defs><pattern id="med" width="120" height="120" patternUnits="userSpaceOnUse"><g opacity="0.04" stroke="white" fill="none" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 60h14M21 53v14"/><path d="M58 42c3-6 12-6 15 1 3 7-5 14-15 21-10-7-18-14-15-21 3-7 12-7 15-1z"/><polyline points="6,92 22,92 28,80 34,100 42,84 52,92 66,92"/><path d="M92 30v16c0 10-16 10-16 0V30"/><circle cx="92" cy="25" r="4"/><circle cx="76" cy="46" r="4"/></g></pattern></defs><rect width="120" height="120" fill="url(%23med)"/></svg>');
+            opacity: 1;
+            z-index: 0;
+        }
+
+        /* Animated gradient shift */
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        /* Hero decorative layers */
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            pointer-events: none;
+        }
+        .shape {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.06);
+            filter: blur(32px);
+        }
+        .shape-1 { width: 420px; height: 420px; top: -90px; left: -90px; border-radius: 50%; }
+        .shape-2 { width: 320px; height: 320px; bottom: -80px; right: -80px; border-radius: 36% 64% 58% 42% / 54% 38% 62% 46%; }
+        .shape-3 { width: 240px; height: 240px; top: 18%; right: 12%; border-radius: 24px; background: rgba(255,255,255,0.08); }
+        .shape-4 { width: 280px; height: 280px; bottom: 12%; left: 24%; border-radius: 50%; background: rgba(255,255,255,0.05); filter: blur(28px); }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(255,255,255,0.3);
+            border-radius: 50%;
+            animation: float 20s infinite ease-in-out;
+            bottom: -10px;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0) translateX(0); opacity: 0; }
+            10% { opacity: 0.3; }
+            90% { opacity: 0.3; }
+            100% { transform: translateY(-100vh) translateX(20px); opacity: 0; }
         }
 
         .hero-content {
             position: relative;
-            z-index: 1;
+            z-index: 2;
         }
 
         .hero h1 {
@@ -330,6 +375,12 @@
                 opacity: 1;
                 transform: translateY(0);
             }
+        }
+
+        /* Mission and Focus Areas separation visuals */
+        #mission {
+            background: linear-gradient(180deg, #F6FAFC 0%, #EFF6FB 100%);
+            padding: 80px 20px;
         }
 
         /* ===========================
@@ -458,24 +509,138 @@
             opacity: 1;
         }
 
+        /* Our Reach section */
+        .reach-section {
+            background: linear-gradient(135deg, #F0F7FC 0%, #E5F3FB 100%);
+            padding: 80px 20px;
+            text-align: center;
+        }
+        .reach-section h2 {
+            font-size: 36px;
+            color: #1F6FB2;
+            margin-bottom: 40px;
+        }
+        .reach-stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        .stat {
+            font-size: 20px;
+            font-weight: 600;
+            color: #2C5F8D;
+            position: relative;
+            padding: 0 20px;
+        }
+        .stat:not(:last-child)::after {
+            content: "•";
+            position: absolute;
+            right: -20px;
+            color: #A8D8F0;
+        }
+        .reach-description {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 18px;
+            line-height: 1.7;
+            color: #333;
+        }
+
+        /* Join community CTA as full section */
         .cta-section {
-            margin-top: 60px;
-            padding: 60px 40px;
-            background: linear-gradient(135deg, var(--secondary-green) 0%, #45a049 100%);
-            border-radius: 16px;
-            color: var(--white);
+            background: linear-gradient(135deg, #4CAF50 0%, #45A049 100%);
+            padding: 80px 20px;
+            text-align: center;
+            color: white;
         }
-
-        .cta-section h3 {
-            color: var(--white);
-            font-size: 2rem;
-            margin-bottom: 1rem;
+        .cta-section h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: white;
         }
-
-        .cta-section p {
-            margin-bottom: 2rem;
-            font-size: 1.125rem;
+        .cta-intro {
+            font-size: 20px;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto 20px;
+            font-weight: 500;
+        }
+        .cta-detail {
+            font-size: 18px;
+            line-height: 1.7;
+            max-width: 700px;
+            margin: 0 auto 35px;
             opacity: 0.95;
+        }
+
+        /* Partner with us */
+        .partner-section {
+            background: #FFFFFF;
+            padding: 80px 20px;
+            text-align: center;
+            border-top: 1px solid #E5E5E5;
+        }
+        .partner-section h2 {
+            font-size: 36px;
+            color: #1F6FB2;
+            margin-bottom: 25px;
+        }
+        .partner-intro {
+            font-size: 18px;
+            line-height: 1.7;
+            max-width: 900px;
+            margin: 0 auto 20px;
+            color: #333;
+        }
+        .partner-cta {
+            font-size: 20px;
+            font-weight: 600;
+            color: #2C5F8D;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            line-height: 1.6;
+        }
+        .partner-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .partner-section .btn-primary {
+            background: #1F6FB2;
+            color: white;
+            padding: 15px 35px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+        .partner-section .btn-primary:hover {
+            background: #2C5F8D;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(31, 111, 178, 0.3);
+        }
+        .partner-section .btn-secondary {
+            background: white;
+            color: #1F6FB2;
+            border: 2px solid #1F6FB2;
+            padding: 15px 35px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+        .partner-section .btn-secondary:hover {
+            background: #1F6FB2;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(31, 111, 178, 0.3);
         }
 
         /* ===========================
@@ -844,9 +1009,11 @@
                 height: 100px;
             }
 
-            .cta-section {
-                padding: 40px 30px;
-            }
+            .reach-stats { flex-direction: column; gap: 15px; }
+            .stat::after { display: none; }
+            .partner-buttons { flex-direction: column; align-items: center; }
+            .partner-section .btn-primary,
+            .partner-section .btn-secondary { width: 100%; max-width: 300px; }
 
             .form-grid {
                 grid-template-columns: 1fr;
@@ -919,9 +1086,7 @@
                 height: 80px;
             }
 
-            .cta-section {
-                padding: 30px 20px;
-            }
+            .cta-section { padding: 60px 20px; }
 
             .cta-section h3 {
                 font-size: 1.5rem;
@@ -1080,6 +1245,24 @@
          HERO SECTION
          =========================== -->
     <section class="hero" id="hero">
+        <div class="hero-bg" aria-hidden="true">
+            <span class="shape shape-1"></span>
+            <span class="shape shape-2"></span>
+            <span class="shape shape-3"></span>
+            <span class="shape shape-4"></span>
+            <span class="particle" style="left: 5%; animation-delay: 0s; animation-duration: 22s;"></span>
+            <span class="particle" style="left: 12%; animation-delay: 2s; animation-duration: 18s;"></span>
+            <span class="particle" style="left: 20%; animation-delay: 4s; animation-duration: 20s;"></span>
+            <span class="particle" style="left: 28%; animation-delay: 6s; animation-duration: 22s;"></span>
+            <span class="particle" style="left: 35%; animation-delay: 8s; animation-duration: 18s;"></span>
+            <span class="particle" style="left: 45%; animation-delay: 10s; animation-duration: 20s;"></span>
+            <span class="particle" style="left: 52%; animation-delay: 12s; animation-duration: 22s;"></span>
+            <span class="particle" style="left: 60%; animation-delay: 14s; animation-duration: 18s;"></span>
+            <span class="particle" style="left: 68%; animation-delay: 16s; animation-duration: 20s;"></span>
+            <span class="particle" style="left: 76%; animation-delay: 18s; animation-duration: 22s;"></span>
+            <span class="particle" style="left: 85%; animation-delay: 20s; animation-duration: 18s;"></span>
+            <span class="particle" style="left: 92%; animation-delay: 22s; animation-duration: 20s;"></span>
+        </div>
         <div class="container">
             <div class="hero-content">
                 <h1>You're not just a patient. You're a person with a story.</h1>
@@ -1125,7 +1308,22 @@
         </div>
     </section>
 
-    <!-- (Our Reach section removed by request) -->
+    <!-- ===========================
+         OUR REACH (NEW)
+         =========================== -->
+    <section id="our-reach" class="reach-section">
+        <div class="container">
+            <h2>Our Reach</h2>
+            <div class="reach-stats">
+                <div class="stat">Millions of people each month.</div>
+                <div class="stat">New voices joining every day.</div>
+                <div class="stat">Connected across all fifty states.</div>
+            </div>
+            <p class="reach-description">
+                HealthScope Network is growing into one of the most trusted spaces for real health conversations — where information meets understanding and people find community through shared experience.
+            </p>
+        </div>
+    </section>
 
     <!-- ===========================
          WHY PEOPLE JOIN
@@ -1240,12 +1438,15 @@
     <section class="focus-areas fade-in hsn-focus" id="focus-areas" role="region" aria-labelledby="hsn-focus-title">
         <style>
             /* HSN Focus Areas scoped adjustments */
-            #focus-areas.hsn-focus { background: linear-gradient(180deg, #FFFFFF 0%, #F6FAFC 100%); }
+            #focus-areas.hsn-focus { background: #FFFFFF; }
+            #focus-areas { border-top: 3px solid #E3F2FD; position: relative; }
+            #focus-areas::before { content: ''; position: absolute; top: -48px; left: 0; right: 0; height: 48px; background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 100" preserveAspectRatio="none"><path fill="%23E3F2FD" d="M0,80 C300,120 900,0 1200,60 L1200,100 L0,100 Z"/></svg>') no-repeat center/cover; opacity: .5; pointer-events: none; }
             #focus-areas .hsn-focus-subtitle { text-align: center; color: #1E2A32; max-width: 900px; margin: -4px auto 18px; }
             #focus-areas .focus-card { position: relative; overflow: hidden; }
             #focus-areas .focus-card::after { content: ''; position: absolute; inset: 0; pointer-events: none; opacity: 0; transition: opacity .3s ease; background: radial-gradient(120px 60px at var(--mx,50%) var(--my,0%), rgba(31,111,178,0.08), transparent 60%); }
             #focus-areas .focus-card:hover::after { opacity: 1; }
             #focus-areas .focus-icon svg { width: 80px; height: 80px; }
+            @media (max-width: 480px) { #focus-areas::before { display: none; } }
             @media (prefers-reduced-motion: reduce) { #focus-areas * { transition: none !important; animation: none !important; } }
         </style>
         <div class="container">
@@ -1353,16 +1554,40 @@
 
                 Our network brings together patients, caregivers, advocates, and healthcare voices who believe that information only matters when it connects to real life. We collaborate with trusted health organizations, research groups, and community advocates to share accurate, accessible, and human-centered stories that make a difference.
             </p>
-            
-            
+        </div>
+    </section>
 
-            <!-- Final CTA -->
-            <div class="cta-section fade-in">
-                <h3>Join Our Community</h3>
-                <p>
-                    Be part of a growing movement that puts people first. Subscribe for updates on new stories, expert interviews, and insights that bring clarity, hope, and connection to health.
-                </p>
-                <a href="#contact" class="btn btn-primary">Join Our Community</a>
+    <!-- ===========================
+         JOIN OUR COMMUNITY (NEW)
+         =========================== -->
+    <section id="join-community" class="cta-section">
+        <div class="container">
+            <h2>Join Our Community</h2>
+            <p class="cta-intro">
+                Be part of a growing movement that puts people first. Get new stories, expert conversations, and clear health guidance straight to your inbox.
+            </p>
+            <p class="cta-detail">
+                Choose the topics you care about and connect with others who share your journey. Together, we're making health feel human again.
+            </p>
+            <a href="#contact" class="btn btn-primary">Join Our Community</a>
+        </div>
+    </section>
+
+    <!-- ===========================
+         PARTNER WITH US (NEW)
+         =========================== -->
+    <section id="partner" class="partner-section">
+        <div class="container">
+            <h2>Partner With Us</h2>
+            <p class="partner-intro">
+                We work with leading health organizations and pharmaceutical companies to create clear, compassionate education that reaches real people. Through story-driven content and plain language communication, HealthScope bridges the gap between science and everyday understanding.
+            </p>
+            <p class="partner-cta">
+                Join us in shaping the future of health communication — where trusted information meets real impact.
+            </p>
+            <div class="partner-buttons">
+                <a href="mailto:partnerships@healthscopenetwork.com?subject=Media%20Kit%20Request" class="btn btn-primary">Request the Media Kit</a>
+                <a href="mailto:partnerships@healthscopenetwork.com?subject=Partnership%20Inquiry" class="btn btn-secondary">Contact Our Team</a>
             </div>
         </div>
     </section>
