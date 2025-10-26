@@ -179,18 +179,7 @@
             }
         }
 
-        /* Hamburger to X animation */
-        .nav-toggle.active span:nth-child(1) {
-            transform: rotate(45deg) translateY(10px);
-        }
-
-        .nav-toggle.active span:nth-child(2) {
-            opacity: 0;
-        }
-
-        .nav-toggle.active span:nth-child(3) {
-            transform: rotate(-45deg) translateY(-10px);
-        }
+        
 
         /* Offset body for fixed nav */
         body {
@@ -1084,13 +1073,7 @@
         /* Tablet */
         @media (max-width: 768px) {
             .hero, #hero { margin-top: 0; }
-            .hero h1,
-            .hero p,
-            section h2,
-            section p,
-            .stories-intro,
-            .story-card,
-            .container { text-align: left; }
+            /* alignment rules moved to dedicated mobile-centering block */
             .btn, button { margin-left: 0; }
             h1 { font-size: 2rem; }
             h2 { font-size: 1.75rem; }
@@ -1455,26 +1438,65 @@
     </style>
     <style>
         /* ISSUE 1: Clean X icon animation - no glitch lines */
+        /* Mobile hamburger menu - clean X animation */
         @media (max-width: 768px) {
-            .nav-toggle span {
-                width: 28px;
-                height: 3px;
-                background: #333;
-                border-radius: 3px;
-                transition: all 0.3s ease;
-                display: block;
-                position: relative;
-            }
-            .nav-toggle.active span:nth-child(1) {
-                transform: rotate(45deg) translate(8px, 8px);
-            }
-            .nav-toggle.active span:nth-child(2) {
-                opacity: 0;
-                transform: scale(0);
-            }
-            .nav-toggle.active span:nth-child(3) {
-                transform: rotate(-45deg) translate(8px, -8px);
-            }
+          .nav-toggle {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 6px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            width: 44px;
+            height: 44px;
+            position: relative;
+          }
+          
+          .nav-toggle span {
+            width: 26px;
+            height: 2.5px;
+            background: #333;
+            border-radius: 2px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: block;
+            position: absolute;
+            left: 50%;
+            transform-origin: center;
+          }
+          
+          /* Position the three lines */
+          .nav-toggle span:nth-child(1) {
+            top: 12px;
+            transform: translateX(-50%);
+          }
+          
+          .nav-toggle span:nth-child(2) {
+            top: 50%;
+            transform: translate(-50%, -50%);
+          }
+          
+          .nav-toggle span:nth-child(3) {
+            bottom: 12px;
+            transform: translateX(-50%);
+          }
+          
+          /* Clean X animation when active */
+          .nav-toggle.active span:nth-child(1) {
+            top: 50%;
+            transform: translate(-50%, -50%) rotate(45deg);
+          }
+          
+          .nav-toggle.active span:nth-child(2) {
+            opacity: 0;
+            transform: translate(-50%, -50%) scale(0);
+          }
+          
+          .nav-toggle.active span:nth-child(3) {
+            bottom: 50%;
+            transform: translate(-50%, 50%) rotate(-45deg);
+          }
         }
 
         /* ISSUE 2: Ensure “What We Cover” visible on mobile and stack vertically */
@@ -1508,6 +1530,112 @@
                 transition: all 0.3s ease !important;
                 animation-duration: 0.3s !important;
             }
+        }
+        
+        /* Mobile - Center all text alignment */
+        @media (max-width: 768px) {
+          /* Hero section */
+          .hero h1,
+          .hero p,
+          .hero-content,
+          .hero-content * {
+            text-align: center !important;
+          }
+          
+          /* All section headings and text */
+          section h2,
+          section h3,
+          section p,
+          section .section-description {
+            text-align: center !important;
+          }
+          
+          /* Featured Stories section */
+          #featured-stories h2,
+          #featured-stories p,
+          .story-card h3,
+          .story-card p,
+          .story-card blockquote {
+            text-align: center !important;
+          }
+          
+          /* Our Reach section */
+          #our-reach h2,
+          #our-reach p,
+          .stat-card,
+          .stat-number,
+          .stat-label {
+            text-align: center !important;
+          }
+          
+          /* Why Trust section (scoped by its own style mostly) */
+          #why-trust h2,
+          #why-trust p,
+          #why-trust .hsn-trust-card h3,
+          #why-trust .hsn-trust-card p {
+            text-align: center !important;
+          }
+          
+          /* Focus Areas (What We Cover analogue) */
+          #focus-areas h2,
+          #focus-areas p,
+          .focus-card h3,
+          .focus-card p {
+            text-align: center !important;
+          }
+          
+          /* Our Network section */
+          #network h2,
+          #network p {
+            text-align: center !important;
+          }
+          
+          /* Join Community section */
+          #join-community h2,
+          #join-community p {
+            text-align: center !important;
+          }
+          
+          /* Partner section */
+          .partner-section h2,
+          .partner-section p {
+            text-align: center !important;
+          }
+          
+          /* Contact section */
+          #contact h2,
+          #contact p,
+          #contact .contact-intro {
+            text-align: center !important;
+          }
+          
+          /* Footer */
+          footer,
+          footer p {
+            text-align: center !important;
+          }
+          
+          /* Buttons - center the button containers */
+          .btn-cta,
+          .partner-buttons,
+          .cta-buttons {
+            text-align: center !important;
+            justify-content: center !important;
+            margin-left: auto !important;
+            margin-right: auto !important;
+          }
+          
+          /* Form labels stay left-aligned (standard UX) */
+          form label {
+            text-align: left !important;
+          }
+          
+          /* But form success/error messages center */
+          .form-success,
+          .form-error,
+          .success-message {
+            text-align: center !important;
+          }
         }
         /* Speed up Why Trust card reveal specifically */
         #why-trust .hsn-trust-card {
